@@ -1,0 +1,281 @@
+
+      /************************************************************* GENERICOS ***************************************************************/
+
+      img {max-width: 100%;}
+      .baloo {font-family: 'Baloo', cursive;}
+	  .center {text-align: center;}
+	  .error {color:white; font-weight: bold; font-size:18px; text-align: center; display:none;}
+	   h1 {font-family: 'Eagle Lake', cursive; font-size:38px; color:white;}
+	  video 
+	  {
+		background-size: cover;
+		bottom: 0;
+		height: auto;
+		min-height: 100%;
+		min-width: 100%;
+		position: fixed;
+		right: 0;
+		width: auto;
+		z-index:-999;
+	  }
+	  
+	  /************************************************************  PLUGINS  ***************************************************************/
+	  
+	  .input--kozakura 
+	  {
+		position:relative !important; width:100% !important;
+		max-width: none !important;
+		font-size:20px; margin:0px !important;
+      }
+	  .input__label-content.input__label-content--kozakura {text-align: center;}
+      .input__field.input__field--kozakura{text-align: center;}
+	  
+	  /***********************************************************  CHAT  ******************************************************************/
+	     
+      #texto 
+	  {
+		  width:100%; 
+		  max-width: 100%; 
+		  min-width: 100%;
+		  background: rgba(0,0,0,0.8);
+		  color: white;
+          font-weight: bold;    
+		  border: none;    
+		  padding: 15px;    
+		  border: solid;
+	  }
+      #inicio 
+	  {
+		  width:100%; 
+		  height:100%; 
+		  position:absolute; 
+		  top:0; 
+		  left:0;
+          z-index:9999 !important; 
+	  }
+      
+      #input_wrapper, #select_avatar
+	  {  
+		position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+	  }
+      #boton_circular 
+	  {
+		  -webkit-transition:all 0.2s linear 0s; 
+		  cursor:pointer;
+	  }
+      #boton_circular:hover 
+	  {
+		  -ms-transform: scale(1.2); /* IE 9 */    
+		  -webkit-transform: scale(1.2); /* Safari */    
+		  transform: scale(1.2);
+	  }
+    #messages
+	{
+		overflow: auto;
+		border: solid 5px gray;
+		padding:30px;
+		width:100%;
+		margin:0 auto;
+		background:white;
+		border-radius:5px 5px 0px 0px !important;
+		height:50vh;
+	}
+    .mensaje
+	{
+		margin-bottom: 20px;  
+		font-size:18px;
+        text-overflow:ellipsis !important; 
+		overflow:hidden; 
+		display:flex; 
+		align-items: center;
+	}
+    input {padding:7px;}
+    #messages strong {color:darkblue;}
+    .hora {color:white; font-style: italic; font-size:10px; font-weight: bold;}
+	#chat 
+	{
+		height:85vh;
+		padding-left:70px; 
+		padding-right:70px; 
+		padding-top:30px;
+		/*background:-webkit-gradient(radial, 100 75, 100, 100 75, 0, from(rgba(0,0,0,0.8)), to(rgba(255,255,255,1)))*/
+	}
+	#inside 
+	{
+		display: none;
+		background: rgba(0,0,0,0.8);
+		height:100vh;
+		/*border:ridge 3px black;*/
+	}
+	#select_avatar {margin:0 auto; display: none; }
+	#cabecera_avatares 
+	{
+		height:15vh;
+		display: flex;
+		align-items: center;
+	}
+	#cabecera_avatares h1 {width:100%;}
+	#users_connected 
+	{
+		padding-top:30px;
+		height:85vh;
+		border-left: ridge 1px lightgray;
+	}
+	#users_connected p 
+	{    
+		color: white;
+    	text-align: center;
+    	font-style: italic;
+    	font-size: 20px;
+    	font-weight: bold;
+    }
+    #users
+    {
+		font-weight: bold;
+		color:lightgreen;
+    }
+
+	#listado_usuarios 
+	{
+		height: 60vh;
+    	overflow: auto;
+	}
+    #listado_usuarios li 
+    {
+    	color: white;
+	    font-size: 18px;
+	    /* font-style: italic; */
+	    list-style: none;
+	    display: flex;
+	    align-items: center;
+	    margin-bottom: 20px;
+	    margin-top: 20px;
+    }
+
+    .writting {width:35px; visibility: hidden;}
+
+    #listado_usuarios .fa-ellipsis-h
+    {
+    	font-size: 20px;
+    	color: white;
+    	margin-left: 10px;
+    }
+
+    #listado_usuarios li i 
+    {
+    	font-size:10px;
+    	color:green;
+    }
+
+	#avatares {height:70vh; overflow:auto; 
+					background:rgba(255,255,255,0.5); padding:20px; border-radius:5px;}
+	#formulario textarea {border-radius:0px 0px 5px 5px !important;
+						  border: solid 5px gray;
+						  border-top:none;}
+	#select_avatar img {max-width: 100%;}
+	.avatar {text-align: center; padding:15px; }
+	.avatar.selected {opacity:0.2; cursor:auto;}
+	.avatar:hover {background:rgba(0,0,0,0.2); border-radius: 5px;cursor:pointer;}
+	.avatar img {max-height: 100px;  }
+	.img 
+	{
+		border:double 3px lightgray;
+		text-align: center; 
+		padding:5px; 
+		background: darkred; 
+		min-width:60px; 
+		max-width:60px;}
+	#users_connected p {color:white; font-style: italic;}
+	.user {font-weight:bold; color:darkblue;}
+	.cuerpo_mensaje p{    background: lightgray;
+		border-radius: 5px;
+		padding:10px;
+		display:inline-block;
+		margin-bottom:0px !important;}
+	.cuerpo_mensaje {padding-left: 30px;
+				    position:relative;
+					min-width:90%;
+					max-width:90%;
+					 /*margin-right: 20px;*/}
+	.pico {    position: absolute;
+		left: 28px;
+		width: 20px;
+		z-index: 0;
+		top: 50%;
+		transform: translate(-50%, -50%);}
+	#writting {color:white; font-weight: bold;}
+	.redondo
+	{
+		width: 50px;
+	    height: 50px;
+	    background-repeat: no-repeat;
+	    background-position: 50%;
+	    border-radius: 50%;
+	    background-size: 100% auto;
+	    background: darkred;
+	    padding: 7px;
+	    border: white inset 2px;
+	    margin-right: 12px;
+	}
+	#cabecera 
+	{
+		height:15vh; 
+		width:100%;
+		margin:0 auto;
+		display:flex;
+		align-items:center;
+		visibility: hidden;
+		background: rgba(0,0,0,0.8);
+		border-bottom:ridge 1px lightgray;
+	}
+	#formulario {height:25vh; width:100%; margin:0 auto; }
+	#formulario button {font-size:20px; 
+						background:#2C2222; 
+						font-weight:bold; 
+						-webkit-transition: all 0.1s linear 0s; 
+						border-radius: 25px !important;
+						border:none !important;}
+	#formulario button:hover {background:black;}
+	#cabecera h1 { margin-left:70px;}
+	#cabecera h1 i { color:lightgreen;}
+	#listado_usuarios i.fa-circle {margin-right:10px;}
+	/**********************************************************    MEDIA QUERIES    *********************************************************/
+	
+	@media all and (max-width: 1000px) 
+	{
+		#messages,#formulario,#cabecera {width:80%;}
+		#cabecera h1 {font-size:32px;}
+	}
+	
+	@media all and (max-width: 600px) 
+	{
+		#messages,#formulario,#cabecera {width:95%;}
+		#messages {padding:15px;}
+		#cabecera h1 {font-size:24px;}
+		.img {min-width:20%; max-width:20%;}
+		.cuerpo_mensaje {min-width:80%; max-width:80%;}
+		#input_wrapper, #select_avatar {width: 80%;}
+		.avatar {padding:15px;}
+	}
+	
+	@media all and (max-height:590px)
+	{
+		#cabecera h1, #cabecera_avatares h1 {font-size:25px;}
+		#formulario button {font-size:15px; }
+		#formulario textarea {max-height: 50px; }
+    
+	}
+
+	@media all and (min-width:1400px)
+	{
+		#inside 
+		{
+			width:80%;
+			margin:0 auto;
+			border-left:1px solid lightgray;
+			border-right:1px solid lightgray;
+		}
+	}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+  <meta charset="UTF-8">
+  <title>El rincón del mongo DBs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="main.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="plugins/TextInputEffects/css/normalize.css" />
+  <link rel="stylesheet" href="plugins/TextInputEffects/css/set2.css" />
+  <link rel="stylesheet" href="css/animate.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Baloo|Love+Ya+Like+A+Sister|Eagle+Lake|Exo" rel="stylesheet">
+  <link rel="stylesheet" href="plugins/TextInputEffects/fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
+</head>  
+<body>
+    <div id="inicio">
+      <!-- Input nickname -->
+      <div  id="input_wrapper" class="animated zoomInLeft">
+      <p class="error center baloo animated">  </p><br>
+        <span class="input input--kozakura">
+            <input class="input__field input__field--kozakura" type="text" id="nickname"  autofocus/>
+            <label class="input__label input__label--kozakura" for="input-7">
+              <span class="input__label-content input__label-content--kozakura" data-content="ESCRIBA SU NICKNAME">ESCRIBA SU NICKNAME</span>
+            </label>
+            <svg class="graphic graphic--kozakura" width="300%" height="100%" viewBox="0 0 1200 60" preserveAspectRatio="none">
+              <path d="M1200,9c0,0-305.005,0-401.001,0C733,9,675.327,4.969,598,4.969C514.994,4.969,449.336,9,400.333,9C299.666,9,0,9,0,9v43c0,0,299.666,0,400.333,0c49.002,0,114.66,3.484,197.667,3.484c77.327,0,135-3.484,200.999-3.484C894.995,52,1200,52,1200,52V9z"/>
+            </svg>
+        </span>
+        <br/><br/><p class="center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Crystal_128_Forward.svg/2000px-Crystal_128_Forward.svg.png" style="width:50px"
+                                    id="boton_circular"/></button></p>
+
+      </div>
+      <!-- Fin Input nickname -->
+      <!-- Selección avatar -->
+      <div id="select_avatar" class="animated zoomInRight">
+        <div id="cabecera_avatares">
+          <h1 class="center"> Selecciona tu avatar </h1>
+        </div>
+        <section id="avatares" class="row">
+          <div class="col-xs-4 col-sm-3 avatar" id="1">
+            <img src="imgs/avatar/1.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="2">
+            <img src="imgs/avatar/2.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="3">
+            <img src="imgs/avatar/3.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="4">
+            <img src="imgs/avatar/4.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="5">
+            <img src="imgs/avatar/5.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="6">
+            <img src="imgs/avatar/6.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="7">
+            <img src="imgs/avatar/7.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="8">
+            <img src="imgs/avatar/8.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="9">
+            <img src="imgs/avatar/9.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="10">
+            <img src="imgs/avatar/10.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="11">
+            <img src="imgs/avatar/11.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="12">
+            <img src="imgs/avatar/12.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="13">
+            <img src="imgs/avatar/13.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="14">
+            <img src="imgs/avatar/14.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="15">
+            <img src="imgs/avatar/15.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="16">
+            <img src="imgs/avatar/16.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="17">
+            <img src="imgs/avatar/17.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="18">
+            <img src="imgs/avatar/18.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="19">
+            <img src="imgs/avatar/19.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="20">
+            <img src="imgs/avatar/20.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="21">
+            <img src="imgs/avatar/21.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="22">
+            <img src="imgs/avatar/22.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="23">
+            <img src="imgs/avatar/23.png" />
+          </div>
+          <div class="col-xs-4 col-sm-3 avatar" id="24">
+            <img src="imgs/avatar/24.png" />
+          </div>
+        </section>
+      </div>
+      <!-- Fin Selección avatar -->      
+    </div>
+    <section id="inside">
+      <div id="cabecera">
+          <h1  style="color:white;"><i class="fa fa-comments-o" aria-hidden="true"></i> The Cool Chat <span style="font-size:60px;"><i class="fa fa-comments" aria-hidden="true"></i></span></h1>
+      </div>
+    	<div id="chat" class="col-xs-9">
+    	  <div id="messages"> 
+        </div>
+  	  	<div id="formulario">  
+  		    <textarea id="texto" placeholder="Cuéntanos algo..." class="form-control"></textarea>
+  			  <p id="writting" class="center">&nbsp;</p>
+  		    <p class="center"><button id="enviar_mensaje" class="btn btn-info"><i class="fa fa-paper-plane" aria-hidden="true"></i>&nbsp;&nbsp; Enviar Mensaje</button></p>
+  		  </div> 
+  	  </div>
+      <div id="users_connected" class="col-xs-3">
+        <p>Usuarios online (<span id="users"></span>)</p><br/>
+        <div id="listado_usuarios">
+          <ul>
+          </ul>
+        </div>
+      </div>
+    </section>
+	<video loop autoplay preload="auto" poster="http://www.significadodeloscolores.com/wp-content/uploads/color_negro.jpg" width="640" height="360">
+	    <source src="imgs/otro.mp4" type="video/mp4" />
+	    <!--<source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.webm" type="video/webm" />
+	    <source src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.ogv" type="video/ogg" />
+	    Tu navegador no soporta HTML5 Video-->
+	</video>
+  <script src="plugins/TextInputEffects/js/classie.js"></script>
+  <script>
+      (function() {
+        // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+        if (!String.prototype.trim) {
+          (function() {
+            // Make sure we trim BOM and NBSP
+            var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+            String.prototype.trim = function() {
+              return this.replace(rtrim, '');
+            };
+          })();
+        }
+
+        [].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+          // in case the input is already filled..
+          if( inputEl.value.trim() !== '' ) {
+            classie.add( inputEl.parentNode, 'input--filled' );
+          }
+
+          // events:
+          inputEl.addEventListener( 'focus', onInputFocus );
+          inputEl.addEventListener( 'blur', onInputBlur );
+        } );
+
+        function onInputFocus( ev ) {
+          classie.add( ev.target.parentNode, 'input--filled' );
+        }
+
+        function onInputBlur( ev ) {
+          if( ev.target.value.trim() === '' ) {
+            classie.remove( ev.target.parentNode, 'input--filled' );
+          }
+        }
+      })();
+    </script>
+</body>  
+</html>  
