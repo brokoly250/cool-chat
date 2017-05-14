@@ -8,6 +8,7 @@ const io = require('socket.io')(server)
 
 var allClients = [];
 var mensajes = [];
+var privados = [];
 var writting_people = [];
 
 app.use(express.static('public'))
@@ -18,7 +19,7 @@ io.sockets.on('connection', function(socket)
 {
    // Se le envían todos los mensajes (solo al conectarse, después solo los actuales)
 
-   socket.emit('mensajes', mensajes)
+   socket.emit('mensajes_general', mensajes)
    io.sockets.emit('usuarios', allClients)
 
    // -----------------------------------  Cuando se desconecta un usuario  --------------------------------
@@ -34,7 +35,7 @@ io.sockets.on('connection', function(socket)
 
    // ----------------------------------- Llega un mensaje nuevo -------------------------------------------
 
-   socket.on('anadir_mensaje', (mensaje) =>
+   socket.on('anadir_mensaje_general', (mensaje) =>
    {
       var usuario = buscarEnArray(allClients, socket);
       
@@ -44,7 +45,29 @@ io.sockets.on('connection', function(socket)
                           avatar: usuario.avatar}
       mensajes.push(mensaje_full)
       
-      io.sockets.emit('mensaje_nuevo', mensaje_full)
+      io.sockets.emit('mensaje_general_nuevo', mensaje_full)
+   })
+
+   // ----------------------------------- Llega un mensaje privado nuevo -------------------------------------------
+
+   socket.on('anadir_mensaje_privado', (mensaje) =>
+   {
+      var id_emisor = id_socket_por_nickname(mensaje.nickEmisor)
+      var id_receptor = id_socket_por_nickname(mensaje.nickReceptor)
+      var emisor = buscarEnArray(allClients, socket)
+      
+      var mensaje_full = 
+      {
+         texto: mensaje.mensaje, 
+         hora: mensaje.hora, 
+         emisor: mensaje.nickEmisor,
+         receptor: mensaje.nickReceptor,
+         avatar: emisor.avatar,
+       }
+
+      privados.push(mensaje_full)
+      io.to(id_emisor).emit('mensaje_privado_nuevo', mensaje_full)
+      io.to(id_receptor).emit('mensaje_privado_nuevo', mensaje_full)
    })
 
    // ------------------------------- Devolvemos los avatares ya usados -------------------------------------
@@ -120,12 +143,26 @@ io.sockets.on('connection', function(socket)
      console.log(writting_people)
    })
 
-   // ----------------------------------------------------------------------------------------------------------
+   // ---------------------------------------------   Cargar conversación privada  -----------------------------
+
+   socket.on('cargar_privado', function(datos)
+   {
+      var mensajes_privados = buscarMensajes(datos.nickEmisor, datos.nickReceptor)
+      socket.emit('mensajes_privados', mensajes_privados)
+   })
+
+   // ---------------------------------------------   Cargar conversación general  -----------------------------
+
+   socket.on('cargar_general', function(datos)
+   {
+      socket.emit('mensajes_general', mensajes)
+      //io.sockets.emit('usuarios', allClients)
+   })
+
 });
 
 server.listen(8080, () =>
 {
-  console.log("El servidor esta corriendo en http://localhost:8080")
 })
 
 
@@ -169,4 +206,37 @@ function used_avatars()
     }
 
     return avatars;
+}
+
+function buscarMensajes(nickEmisor, nickReceptor)
+{
+  var msj_priv = []
+
+  for (var i = 0; i < privados.length; i++)
+  {
+    if ((nickEmisor == privados[i].emisor && nickReceptor == privados[i].receptor) 
+       || (nickEmisor == privados[i].receptor && nickReceptor == privados[i].emisor))
+    {
+          msj_priv.push(privados[i])
+    }
+  }
+
+  return msj_priv;
+}
+
+function id_socket_por_nickname(nickname)
+{
+
+  var ret = "";
+
+  for (var i = 0; i < allClients.length; i++)
+  {
+    if (allClients[i].nickname == nickname)
+    {
+      ret = allClients[i].id_socket
+      break
+    }
+  }
+
+  return ret;
 }

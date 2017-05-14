@@ -2,10 +2,9 @@
       /************************************************************* GENERICOS ***************************************************************/
 
       img {max-width: 100%;}
-      .baloo {font-family: 'Baloo', cursive;}
 	  .center {text-align: center;}
 	  .error {color:white; font-weight: bold; font-size:18px; text-align: center; display:none;}
-	   h1 {font-family: 'Eagle Lake', cursive; font-size:38px; color:white;}
+	   h1 {font-family: 'Eagle Lake', cursive; font-size: 30px; color:white;}
 	  video 
 	  {
 		background-size: cover;
@@ -18,7 +17,15 @@
 		width: auto;
 		z-index:-999;
 	  }
+
+	  /*******************************************************  FUENTES  ***************************************/
 	  
+
+	  .audiowide {font-family: 'Audiowide', cursive;}
+	  .baloo {font-family: 'Baloo', cursive;}
+	  .damion {font-family: 'Damion', cursive;}
+	  .exo {font-family: 'Exo', sans-serif;}
+	  .pt_sans {font-family: 'PT Sans', sans-serif; font-weight:bold;}
 	  /************************************************************  PLUGINS  ***************************************************************/
 	  
 	  .input--kozakura 
@@ -75,13 +82,11 @@
     #messages
 	{
 		overflow: auto;
-		border: solid 5px gray;
-		padding:30px;
 		width:100%;
 		margin:0 auto;
 		background:white;
-		border-radius:5px 5px 0px 0px !important;
-		height:50vh;
+		height:48vh;
+		padding: 25px;
 	}
     .mensaje
 	{
@@ -92,12 +97,18 @@
 		display:flex; 
 		align-items: center;
 	}
+	.mensaje.soy_yo .cuerpo_mensaje p {background: lightgreen;}
+	.mensaje.soy_yo .pico 
+	{
+		right: -22px;
+    	left: auto;
+    }
     input {padding:7px;}
     #messages strong {color:darkblue;}
     .hora {color:white; font-style: italic; font-size:10px; font-weight: bold;}
 	#chat 
 	{
-		height:85vh;
+		height:88vh;
 		padding-left:70px; 
 		padding-right:70px; 
 		padding-top:30px;
@@ -155,6 +166,8 @@
 	    margin-top: 20px;
     }
 
+    .user_nick {cursor:pointer;}
+
     .writting {width:35px; visibility: hidden;}
 
     #listado_usuarios .fa-ellipsis-h
@@ -187,7 +200,9 @@
 		padding:5px; 
 		background: darkred; 
 		min-width:60px; 
-		max-width:60px;}
+		max-width:60px;
+		border-radius:5px;
+	}
 	#users_connected p {color:white; font-style: italic;}
 	.user {font-weight:bold; color:darkblue;}
 	.cuerpo_mensaje p{    background: lightgray;
@@ -199,6 +214,7 @@
 				    position:relative;
 					min-width:90%;
 					max-width:90%;
+					font-size:18px;
 					 /*margin-right: 20px;*/}
 	.pico {    position: absolute;
 		left: 28px;
@@ -222,7 +238,7 @@
 	}
 	#cabecera 
 	{
-		height:15vh; 
+		height:12vh; 
 		width:100%;
 		margin:0 auto;
 		display:flex;
@@ -239,9 +255,86 @@
 						border-radius: 25px !important;
 						border:none !important;}
 	#formulario button:hover {background:black;}
-	#cabecera h1 { margin-left:70px;}
+	#cabecera h1 
+	{ 
+		margin-left:70px; 
+		font-size:48px;
+		color:white;
+		text-shadow: lightgreen -2px -2px 7px;
+	}
 	#cabecera h1 i { color:lightgreen;}
 	#listado_usuarios i.fa-circle {margin-right:10px;}
+	#chat_wrapper 
+	{
+		padding-bottom: 40px;
+		/*padding-top:40px;*/
+    	background: white;
+    	border: solid 5px gray;
+    	border-radius:5px 5px 0px 0px !important;
+    	position:relative;
+	}
+	#open_windows 
+	{
+		position:absolute;
+		bottom:0px;
+		display:-webkit-box;
+		width:100%;
+	}
+	.window.active
+	{
+		color:black;
+		background:white;
+	}
+	.window:not(.active)
+	{
+		cursor:pointer;
+	}
+	.window:not(.active):hover{border-color:blue;}
+	.window i 
+	{
+		visibility:hidden;
+		position: absolute;
+    	top: 3px;
+    	left: 5px;
+    	cursor:pointer;
+	}
+	.window:hover i 
+	{
+		visibility: visible;
+	}
+	.window
+	{
+		-webkit-transition:all 0.2s linear 0s;
+		background:black;
+		color:white;
+		font-weight:bold;
+		padding:3px;
+		overflow:hidden;
+		text-overflow: ellipsis;
+		text-align: center;
+		padding-left:20px;
+		padding-right:20px;
+		border: solid 2px gray;
+		-webkit-box-flex:1;
+		max-width: 100px;
+		border-radius: 8px 8px 0px 0px;
+		transition:all 0.2s linear 0s;
+		border-bottom:none;
+		position:relative;
+	}
+
+	.window span 
+	{
+		position: absolute;
+    	top: 1px;
+    	right: 1px;
+    	background: red;
+    	width: 20px;
+    	height: 20px;
+    	border-radius: 50%;
+    	color:white;
+	}
+	/*#open_windows div:last-child {border-right:0px;}*/
 	/**********************************************************    MEDIA QUERIES    *********************************************************/
 	
 	@media all and (max-width: 1000px) 
