@@ -211,7 +211,7 @@ socket.on('mensaje_privado_nuevo', (data) =>
   }
   else
   {
-    $("#open_windows").append(`<div class="window" id="${data.emisor}" >
+    $("#open_windows").append(`<div class="window animate lightSpeedIn" id="${data.emisor}" >
                                     ${data.emisor}
                                     <span>1</span>
                                     <i class='fa fa-times'></i>
