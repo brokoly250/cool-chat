@@ -1,4 +1,5 @@
 const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
+//const socket = io.connect('http://192.168.1.130:8080', {'forceNew': true})
 var nickname = "";
 var contador = "";
 //var sin_leer = [];
@@ -83,8 +84,26 @@ socket.on('mensajes_privados', function(data)
 {
   $("#messages").empty();
   $(data).each((index, elem) =>
+  {
+    if (elem.emisor == nickname)
     {
-        $("#messages").append(`<div class='mensaje' data-emisor='${elem.emisor}'>
+      $("#messages").append(`<div class='mensaje soy_yo' data-emisor='${elem.emisor}'>
+                                <div class='cuerpo_mensaje pt_sans' style="text-align:right; margin-right:20px;">
+                                  <img class='pico' src='imgs/recursos/pico2.png' />
+                                  <p>
+                                    <span class='user'>Tú:</span> 
+                                    <span class='texto_mensaje'>${elem.texto}</span>
+                                    <span class='hora'>${elem.hora}</span>
+                                  </p>
+                                </div>
+                                <div class='img'>
+                                  <img src='imgs/avatar/${elem.avatar}.png' class='img_avatar'>
+                                </div>
+                               </div>`);
+    }
+    else
+    {
+      $("#messages").append(`<div class='mensaje' data-emisor='${elem.emisor}'>
                                 <div class='img'>
                                   <img src='imgs/avatar/${elem.avatar}.png' class='img_avatar'>
                                 </div>
@@ -97,7 +116,10 @@ socket.on('mensajes_privados', function(data)
                                   </p>
                                 </div>
                                </div>`);
-    })
+    }
+
+        
+  })
 
   $("#messages").animate({ scrollTop: $('#messages').prop("scrollHeight")}, 1000);
 })
@@ -354,7 +376,7 @@ $(document).ready(() =>
 
   function seleccionar_privado()
   {
-    $("#listado_usuarios .user_nick").click(function()
+    $("#listado_usuarios .user_nick, #listado_usuarios .redondo").click(function()
     {
       var user_selected = $(this).parent().data('id');
 

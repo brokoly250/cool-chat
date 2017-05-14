@@ -166,7 +166,7 @@
 	    margin-top: 20px;
     }
 
-    .user_nick {cursor:pointer;}
+    .user_nick, .redondo {cursor:pointer;}
 
     .writting {width:35px; visibility: hidden;}
 
@@ -254,7 +254,7 @@
 						-webkit-transition: all 0.1s linear 0s; 
 						border-radius: 25px !important;
 						border:none !important;}
-	#formulario button:hover {background:black;}
+	#formulario button:hover {background:black; }
 	#cabecera h1 
 	{ 
 		margin-left:70px; 
