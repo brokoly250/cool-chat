@@ -1,5 +1,5 @@
 const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
-//const socket = io.connect('http://192.168.1.130:8080', {'forceNew': true})
+//const socket = io.connect('http://192.168.1.129:8080', {'forceNew': true})
 var nickname = "";
 var contador = "";
 //var sin_leer = [];
@@ -286,6 +286,7 @@ $(document).ready(() =>
   $(".avatar").click(function() 
   {	
     if ($(this).hasClass("selected") == false)
+      $(".avatar").addClass("selected")
   	   socket.emit('seleccion_avatar', {avatar: $(this).attr("id"), nickname: nickname})
   })
 
@@ -428,7 +429,11 @@ $(document).ready(() =>
         setTimeout(function()
         {
           $(window_del).remove();
-        },1000)
+          if ($(".window.active").length == 0)
+          {
+            $(".window#general").trigger("click")
+          }
+        },300)
         
         $(".window#general").trigger("click")
       })
