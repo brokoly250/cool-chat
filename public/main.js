@@ -1,5 +1,5 @@
-//const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
-const socket = io.connect('http://192.168.1.129:8080', {'forceNew': true})
+const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
+//const socket = io.connect('http://192.168.1.129:8080', {'forceNew': true})
 var nickname = "";
 var contador = "";
 //var sin_leer = [];
