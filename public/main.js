@@ -1,5 +1,5 @@
-const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
-//const socket = io.connect('http://192.168.1.129:8080', {'forceNew': true})
+//const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
+const socket = io.connect('http://192.168.1.129:8080', {'forceNew': true})
 var nickname = "";
 var contador = "";
 //var sin_leer = [];
@@ -226,6 +226,7 @@ socket.on('mensaje_privado_nuevo', (data) =>
     var sin_leer = $(`.window#${data.emisor} span`).html()
     $(`.window#${data.emisor} span`).html(parseInt(sin_leer) + 1)
     $(`.window#${data.emisor} span`).css("visibility", "visible")
+    $("#musica")[0].play()
   }
   else
   {
@@ -234,6 +235,7 @@ socket.on('mensaje_privado_nuevo', (data) =>
                                     <span>1</span>
                                     <i class='fa fa-times'></i>
                                    </div>`)
+    $("#musica")[0].play()
     cambiar_active();
     $(`.window#${data.emisor} span`).css("visibility", "visible")
   }
@@ -430,6 +432,7 @@ $(document).ready(() =>
       {
         $(".window.active").removeClass('active')
         $(this).addClass('active')
+        $("#texto").val("").focus()
         cambiar_active() 
         if ($(this).attr('id') == 'general')
         {
