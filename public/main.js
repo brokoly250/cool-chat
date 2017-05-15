@@ -1,5 +1,5 @@
-//const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
-const socket = io.connect('http://192.168.1.129:8080', {'forceNew': true})
+const socket = io.connect('http://cool-chat-cool-chat.1d35.starter-us-east-1.openshiftapps.com', {'forceNew': true})
+//const socket = io.connect('http://192.168.1.129:8080', {'forceNew': true})
 var nickname = "";
 var contador = "";
 //var sin_leer = [];
@@ -223,6 +223,19 @@ socket.on('mensaje_privado_nuevo', (data) =>
   // Ya tiene la pestaña abierta
   else if ($(`.window#${data.emisor}`).length > 0)
   {
+    if ($(`.window#${data.emisor}`).hasClass('lightSpeedIn'))
+    {
+      $(`.window#${data.emisor}`).removeClass('lightSpeedIn')
+    }
+    if ($(`.window#${data.emisor}`).hasClass('shake'))
+    {
+      $(`.window#${data.emisor}`).removeClass("shake")  
+    }
+    setTimeout(function()
+      {
+        $(`.window#${data.emisor}`).addClass("shake")    
+      }, 200)
+    
     var sin_leer = $(`.window#${data.emisor} span`).html()
     $(`.window#${data.emisor} span`).html(parseInt(sin_leer) + 1)
     $(`.window#${data.emisor} span`).css("visibility", "visible")
