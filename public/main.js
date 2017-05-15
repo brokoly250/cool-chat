@@ -59,22 +59,36 @@ socket.on('mensajes_general', (data) =>
     {
         if (elem.nickname == nickname)
         {
-           soy_yo = "soy_yo"
+           $("#messages").append(`<div class='mensaje soy_yo'>
+                                <div class='cuerpo_mensaje pt_sans' style="text-align:right; margin-right:20px;">
+                                  <img class='pico' src='imgs/recursos/pico2.png' />
+                                  <p>
+                                    <span class='user'>Tú:</span> 
+                                    <span class='texto_mensaje'>${elem.texto}</span>
+                                    <span class='hora'>${elem.hora}</span>
+                                  </p>
+                                </div>
+                                <div class='img'>
+                                  <img src='imgs/avatar/${elem.avatar}.png' class='img_avatar'>
+                                </div>
+                               </div>`);
         }
-
-        $("#messages").append(`<div class='mensaje ${soy_yo}'>
-                               	<div class='img'>
-                               		<img src='imgs/avatar/${elem.avatar}.png' class='img_avatar'>
-                               	</div>
-                               	<div class='cuerpo_mensaje pt_sans'>
-                               		<img class='pico' src='imgs/recursos/pico.png' />
-              									<p>
-              										<span class='user'>${elem.nickname}:</span> 
-              										<span class='texto_mensaje'>${elem.texto}</span>
-              										<span class='hora'>${elem.hora}</span>
-              									</p>
-                               	</div>
-                          	   </div>`);
+        else
+        {
+           $("#messages").append(`<div class='mensaje'>
+                                <div class='img'>
+                                  <img src='imgs/avatar/${elem.avatar}.png' class='img_avatar'>
+                                </div>
+                                <div class='cuerpo_mensaje pt_sans'>
+                                  <img class='pico' src='imgs/recursos/pico.png' />
+                                <p>
+                                  <span class='user'>${elem.nickname}:</span> 
+                                  <span class='texto_mensaje'>${elem.texto}</span>
+                                  <span class='hora'>${elem.hora}</span>
+                                </p>
+                                </div>
+                               </div>`);
+        }
     })
 
     $("#messages").animate({ scrollTop: $('#messages').prop("scrollHeight")}, 1000);
@@ -126,7 +140,8 @@ socket.on('mensajes_privados', function(data)
 
 socket.on('mensaje_general_nuevo', (data) =>
 {
-
+  if ($(".window.active").attr('id') == "general")
+  {
     if (data.nickname == nickname)
     {
        $("#messages").append(`<div class='mensaje animated zoomIn soy_yo'>
@@ -161,6 +176,9 @@ socket.on('mensaje_general_nuevo', (data) =>
     }
     
     $("#messages").animate({ scrollTop: $('#messages').prop("scrollHeight")}, 1000);
+
+  }
+
 });
 
 socket.on('mensaje_privado_nuevo', (data) =>
